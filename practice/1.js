@@ -44,3 +44,32 @@ function charCount(str) {
 }
 
 console.log(charCount('hello whats up'))
+
+
+// checking anagrams
+
+function validAnagram(text1, text2) {
+    if (text1.length !== text2.length) {
+        return false;
+    }
+
+    const letters = {};
+
+    for (let i = 0; i < text1.length; i++) {
+        let letter = text1[i];
+        letters[letter] ? letters[letter] += 1 : letters[letter] = 1;
+    }
+
+    for (let i = 0; i < text2.length; i++) {
+        let letter = text2[i];
+        if (!letters[letter]) {
+            return false;
+        } else {
+            letters[letter] -= 1;
+        }
+    }
+
+    return true;
+}
+
+console.log(validAnagram('amel', 'lame'))
