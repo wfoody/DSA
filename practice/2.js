@@ -14,6 +14,8 @@ function averagePair(arr, target) {
     return false
 }
 
+// refactored
+
 function averagePair(arr, target) {
     // arr = [1, 2, 4, 8, 16] target = 5.5
     //              j  i
@@ -41,5 +43,38 @@ console.log(averagePair([1, 2, 4, 8, 16], 5.5))
 
 
 // 
+
+function highAndLow(str) {
+
+
+    numbersArray = str.split(' ');
+    newArray = [];
+
+    numbersArray.forEach((number) => {
+        newArray.push(parseInt(number))
+    })
+
+
+    console.log(newArray)
+
+
+    let highest = newArray[0];
+    let lowest = newArray[0];
+   
+
+    for (i = 0; i < str.length; i++) {
+        
+        if (newArray[i] > highest) {
+            highest = newArray[i]
+        } else if (newArray[i] < lowest) {
+            lowest = newArray[i]
+        }
+    }
+    return `${highest} ${lowest}`
+
+    
+}
+
+console.log(highAndLow('1 2 3 4 13'))
 
 
