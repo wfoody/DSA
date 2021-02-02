@@ -78,3 +78,28 @@ function highAndLow(str) {
 console.log(highAndLow('1 2 3 4 13'))
 
 
+// 
+
+function twoSum(arr, target) {
+
+    let arr = [1, 2, 3, 4, 5, 6];
+    let target = 10;
+    let result = [];
+    
+    i = arr[0];
+    j = arr.length - 1
+    
+    while (i < j) {
+        let sum = arr[i] + arr[j]
+        if (sum === target) {
+            return arr[i], arr[j]
+        } else if (sum > target) {
+            j--;
+        } else {
+            i++;
+        }
+    }
+    console.log(result);
+}
+
+twoSum();
