@@ -3,7 +3,7 @@
 function twoSum() {
 
     let arr = [1, 2, 3, 4, 5, 6];
-    let target = 11;
+    let target = 12;
     let result = [];
     
     let i = arr[0];
@@ -20,7 +20,7 @@ function twoSum() {
             i++;
         }
     }
-    // console.log(result);
+    // return 'nope'
 }
 
 console.log(twoSum());
