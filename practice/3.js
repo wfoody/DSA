@@ -175,16 +175,3 @@ const mostPeopleAlive = (peopleArray) => {
 
 };
 
-// binary search
-
-const binarySearch = (arr, num) => {
-
-    let i = 0;
-    let j = arr.length - 1;
-    let mid = Math.floor((i + j) / 2);
-
-    console.log(i, mid, j);
-
-}
-
-binarySearch([2, 5, 6, 9, 13, 15, 28, 30], 15)
