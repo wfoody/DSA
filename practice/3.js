@@ -68,7 +68,7 @@ const combineSorted = () => {
         }
         i++;
         j++;
-    } 
+    }
 
     return arr3;
 }
@@ -122,15 +122,15 @@ console.log(checkPalindrome())
 // 
 
 const removeDuplicates = () => {
-    
-    let nums = [0,0,1,1,1,2,2,3,3,4]
-    
+
+    let nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] === nums[i + 1]) {
             nums.splice(i)
-        } 
+        }
     }
-     return [nums.length, nums]
+    return [nums.length, nums]
 };
 
 console.log(removeDuplicates())
@@ -175,3 +175,87 @@ const mostPeopleAlive = (peopleArray) => {
 
 };
 
+// binary search
+
+const binarySearch = (arr, num) => {
+
+    let start = 0;
+    let end = arr.length - 1;
+    let mid = Math.floor((start + end) / 2);
+
+    while (start <= end) {
+        if (num === arr[mid]) {
+            return mid;
+        } else if (num > arr[mid]) {
+            start = mid + 1;
+            mid = Math.floor((start + end) / 2);
+        } else { //(num < arr[mid])
+            end = mid - 1;
+            mid = Math.floor((start + end) / 2);
+        }
+    }
+    return -1;
+};
+
+console.log(binarySearch([2, 5, 6, 9, 13, 15, 28, 30], 15))
+
+// 
+
+// given two strings, determine if they are 0-1 edits away from each other
+
+// inserting, removing, replacing char
+
+// pale, ple
+
+const oneAway = (str1, str2) => {
+
+    let diff = Math.abs(str1.length - str2.length);
+
+    if (str1 === str2) {
+        return true;
+    } else if (diff > 1) {
+        return false;
+    } else if (diff === 0) {
+        let diffChar = 0;
+        for (let i = 0; i < str1.length; i++) {
+            if (str1[i] !== str2[i]) {
+                diffChar = diffChar + 1
+            }
+        }
+        return diffChar <= 1;
+     } else { // (diff === 1)
+        
+    }
+
+};
+
+// 
+
+// reverse words and capitalize
+
+const revAndCap = (str) => {
+
+    let arr = str.split(' ');
+    let newArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        let splitWord = arr[i].split('')
+        let rev = splitWord.reverse()
+        newArr.push(rev.join(''));
+    }
+
+    let unCap = newArr.join(' ');
+
+    let arrFinal = unCap.split(' ');
+    let newArray = [];
+
+    for (let i = 0; i < arrFinal.length; i++) {
+        let newWord = arrFinal[i].charAt(0).toUpperCase() + arrFinal[i].slice(1);
+        newArray.push(newWord);
+    }
+
+    return newArray.join(' ');
+
+};
+
+console.log(revAndCap('hello how are you'))
