@@ -121,19 +121,19 @@ console.log(checkPalindrome())
 
 // 
 
-const removeDuplicates = () => {
+// const removeDuplicates = () => {
 
-    let nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+//     let nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
 
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] === nums[i + 1]) {
-            nums.splice(i)
-        }
-    }
-    return [nums.length, nums]
-};
+//     for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] === nums[i + 1]) {
+//             nums.splice(i)
+//         }
+//     }
+//     return [nums.length, nums]
+// };
 
-console.log(removeDuplicates())
+// console.log(removeDuplicates())
 
 // 
 
@@ -199,7 +199,33 @@ const binarySearch = (arr, num) => {
 
 console.log(binarySearch([2, 5, 6, 9, 13, 15, 28, 30], 15))
 
-// 
+// Testing code - or more specifically functions/method
+// Unit Tests/Test Cases
+//  - A very specific test/verification of one thing your function should do. Example: does function return false when given negative number
+// Code coverage
+//  - Goal: Trying to test/run every line in your code
+// Debugging:
+//  - Debugger (part of the IDE)
+//  - Print debugging (console.log): Print the important state (ex. variables) in your code. Also binary search helps
+//      - Also can print if you got to a certain line of code or not
+// Test Driven Development:
+//  - 
+// Tips:
+//  - 
+function testFunction(i) {
+    if (i < 0) {
+        // do a
+    } else if (i === 0) {
+        // do b
+    } else { // i >0
+        // do c
+    }
+}
+
+testFunction(-1); // verify a
+testFunction(0); // verify b 
+testFunction(1); // verify c
+
 
 // given two strings, determine if they are 0-1 edits away from each other
 
@@ -208,7 +234,7 @@ console.log(binarySearch([2, 5, 6, 9, 13, 15, 28, 30], 15))
 // pale, ple
 
 const oneAway = (str1, str2) => {
-
+    console.log("Testing oneAway");
     let diff = Math.abs(str1.length - str2.length);
 
     if (str1 === str2) {
@@ -219,15 +245,58 @@ const oneAway = (str1, str2) => {
         let diffChar = 0;
         for (let i = 0; i < str1.length; i++) {
             if (str1[i] !== str2[i]) {
-                diffChar = diffChar + 1
+                diffChar += 1
             }
         }
         return diffChar <= 1;
-     } else { // (diff === 1)
-        
-    }
+    } else { // (diff === 1)
+        let i = 0;
+        let short = null;
+        let long = null;
+        let strArr1 = str1.split('');
+        let strArr2 = str2.split('');
+        let diffCounter = 0;
 
+        if (strArr1.length < strArr2.length) {
+            short = strArr1;
+            long = strArr2;
+        } else {
+            short = strArr2;
+            long = strArr1;
+        }
+        console.log("entering while loop");
+        while (i < short.length) {
+            console.log(`i =` + i + ", short[i] = " + short[i] + ", long[i] = " + long[i]);
+            if (short[i] === long[i]) {
+                console.log("i++");
+                i++;
+            } else if (diffCounter === 0) { // 
+                console.log("short before splice: " + short)
+                short.splice(i, 0, long[i]); // 1: index, 2: how many indexes you are getting rid of, 3: what you are inputting
+                console.log("short after splice: " + short)
+                diffCounter = 1;
+            } else if (diffCounter > 0) {
+                return false;
+            }
+        }
+        console.log(short, long, diffCounter)
+        return (diffCounter <= 1);
+    }
 };
+// 'abed' 'abcde'
+//    e vs c
+// 'abced' 'abcde' | diff = 1
+//    e vs d | diff = 2 return false
+console.log(oneAway('a', '  '))
+
+
+
+
+
+
+
+
+// bread, breafd
 
 // 
 
@@ -245,7 +314,6 @@ const revAndCap = (str) => {
     }
 
     let unCap = newArr.join(' ');
-
     let arrFinal = unCap.split(' ');
     let newArray = [];
 
@@ -259,3 +327,67 @@ const revAndCap = (str) => {
 };
 
 console.log(revAndCap('hello how are you'))
+
+
+
+// closest to zero 
+
+const closestToZero = (arr) => {
+
+    let min = 100000;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (Math.abs(arr[i]) < min) {
+            min = arr[i]
+        }
+    }
+    return min;
+}
+
+console.log(closestToZero([3.5, 17.6, -2.3, -4.5, 8, 2, 1, -0.5, -1]))
+
+// 
+
+
+
+const removeDuplicates = (nums) => {
+
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === nums[i + 1]) {
+            nums.splice(i, 1);
+            i--;
+        }
+    }
+    return nums;
+};
+
+console.log(removeDuplicates([0, 0, 0, 0, 1, 1, 1, 1]))
+
+// 
+
+
+
+const searchInsert = (nums, target) => {
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === target) {
+            return i;
+        } else if (!nums[target]) {
+            if (nums[i] >= target) {
+                return i;
+            } else {
+                return nums.length;
+            }
+        }
+    }
+
+};
+
+console.log(searchInsert([1, 2, 3], 4))
+
+// 
+
+if ('hi' === 'hi') {
+    return true;
+}
